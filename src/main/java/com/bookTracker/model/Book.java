@@ -1,8 +1,6 @@
 package com.bookTracker.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,7 +8,8 @@ import javax.persistence.ManyToMany;
 import java.util.List;
 
 @Entity
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @EqualsAndHashCode
 public class Book {
@@ -22,4 +21,5 @@ public class Book {
     private List<Author> authors;
     private Category category;
     private BookType type;
+    private Status bookStatus;
 }

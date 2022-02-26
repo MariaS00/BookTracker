@@ -4,7 +4,9 @@ import com.bookTracker.model.Book;
 import com.bookTracker.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -21,10 +23,13 @@ public class BookController {
         return bookService.getBooks();
     }
 
-    @GetMapping("/books")
+    @GetMapping("/book")
     public Book saveBook(Book book){
         return bookService.create(book);
     }
 
-    
+    @PostMapping("/book")
+    public void remove(Book book){
+         bookService.remove(book);
+    }
 }
