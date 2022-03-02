@@ -6,14 +6,15 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
-public interface BookRepository extends JpaRepository<Book, Long> {
+public interface BookRepository extends JpaRepository<Book, UUID> {
 
     @Override
     List<Book> findAll();
 
-    Optional<Book> findById(Long bookId);
+    Optional<Book> findBookByBookId(UUID bookId);
 
     Optional<Book> getBookByTitle(String title);
 

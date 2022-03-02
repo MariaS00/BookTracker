@@ -24,7 +24,7 @@ class BookRepositoryTest {
     @Autowired
     private EntityManager entityManager;
 
-    List<Author> a = new ArrayList<>();
+//    List<Author> a = new ArrayList<>();
 
     @Test
     void shouldSave(){
@@ -36,6 +36,7 @@ class BookRepositoryTest {
         books.add(book);
         books.add(ebook);
         books.add(audiobook);
+
         repository.saveAllAndFlush(books);
 
         Assertions.assertEquals(3, repository.count());
