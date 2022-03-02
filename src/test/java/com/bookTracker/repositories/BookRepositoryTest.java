@@ -28,11 +28,15 @@ class BookRepositoryTest {
 
     @Test
     void shouldSave(){
-        final var book = new Book(1, "Son", List.of(new Author(1, "Jo", "Nesbo")), Category.CRIME, BookType.BOOK, Status.READ);
-        final var ebook = new Book(2, "The King", List.of(new Author(1, "Jo", "Nesbo")), Category.CRIME, BookType.EBOOK, Status.TO_READ);
-        final var audiobook = new Book(3, "Harry Potter", List.of(new Author(2, "J.K","Rowling,")), Category.FANTASY, BookType.AUDIOBOOK, Status.READING_NOW);
+        final var book = new Book( "Son", List.of(new Author( "Jo", "Nesbo")), Category.CRIME, BookType.BOOK, Status.READ);
+        final var ebook = new Book( "The King", List.of(new Author( "Jo", "Nesbo")), Category.CRIME, BookType.EBOOK, Status.TO_READ);
+        final var audiobook = new Book( "Harry Potter", List.of(new Author( "J.K","Rowling,")), Category.FANTASY, BookType.AUDIOBOOK, Status.READING_NOW);
 
-        repository.saveAllAndFlush(List.of(book, ebook, audiobook));
+        List<Book> books = new ArrayList<>();
+        books.add(book);
+        books.add(ebook);
+        books.add(audiobook);
+        repository.saveAllAndFlush(books);
 
         Assertions.assertEquals(3, repository.count());
     }
