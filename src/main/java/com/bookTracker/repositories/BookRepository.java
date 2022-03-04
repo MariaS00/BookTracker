@@ -24,6 +24,9 @@ public interface BookRepository extends JpaRepository<Book, UUID> {
 
     Optional<List<Book>> getBooksByType(BookType type);
 
-    List<Book> getBooksByBookStatus(Status status);
+    Optional<List<Book>> getBooksByBookStatus(Status status);
 
+    int countBooksByAuthorsOrderByAuthorsAsc(Author author);
+
+    int countBooksByBookStatus(Status status);
 }

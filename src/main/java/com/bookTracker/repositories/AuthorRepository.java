@@ -1,6 +1,7 @@
 package com.bookTracker.repositories;
 
 import com.bookTracker.model.Author;
+import com.bookTracker.model.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -19,9 +20,5 @@ public interface AuthorRepository extends JpaRepository<Author, UUID> {
     Optional<List<Author>> findByName(String name);
 
     Optional<List<Author>> findBySurname(String surname);
-
-    Optional<List<Author>> getAuthorsByBooksContains(String book);
-
-
 
 }

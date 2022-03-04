@@ -15,7 +15,7 @@ public class Book {
     @Id
     private UUID bookId;
     private String title;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "books_authors",
             joinColumns = @JoinColumn(name = "book_id"),

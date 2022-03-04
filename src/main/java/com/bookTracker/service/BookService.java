@@ -53,17 +53,17 @@ public class BookService {
         return bookRepository.getBooksByType(audiobook);
     }
 
-    public List<Book> getBookStatusRead(){
+    public Optional<List<Book>> getBookStatusRead(){
         final var read = Status.READ;
         return bookRepository.getBooksByBookStatus(read);
     }
 
-    public List<Book> getBookStatusReading(){
+    public Optional<List<Book>> getBookStatusReading(){
         final var readingNow = Status.READING_NOW;
         return bookRepository.getBooksByBookStatus(readingNow);
     }
 
-    public List<Book> getBookStatusToRead(){
+    public Optional<List<Book>> getBookStatusToRead(){
         final var toRead = Status.TO_READ;
         return bookRepository.getBooksByBookStatus(toRead);
     }
