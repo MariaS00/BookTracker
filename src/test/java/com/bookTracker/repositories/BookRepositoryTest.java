@@ -20,9 +20,6 @@ class BookRepositoryTest {
     @Autowired
     private BookRepository repository;
 
-    @Autowired
-    private EntityManager entityManager;
-
     @Test
     void shouldSave() {
         final var author1 = new Author("Jo", "Nesbo");
@@ -36,6 +33,22 @@ class BookRepositoryTest {
         repository.saveAllAndFlush(List.of(book, ebook, audiobook));
 
         assertEquals(3, repository.count());
+    }
+
+    @Test
+    void shouldFindAll(){
+        final var author1 = new Author("Jo", "Nesbo");
+        final var author2 = new Author("Stephen", "King");
+        final var author3 = new Author("Joe", "Hill");
+
+        final var book = new Book("Son", List.of(author1), Category.CRIME, BookType.BOOK, Status.READ);
+        final var ebook = new Book("In the Tall Grass", List.of(author2, author3), Category.CRIME, BookType.EBOOK, Status.TO_READ);
+        final var audiobook = new Book("Desperation", List.of(author2), Category.HORROR, BookType.AUDIOBOOK, Status.READING_NOW);
+
+        final var books = repository.saveAllAndFlush(List.of(book, ebook, audiobook));
+
+        final var all = repository.findAll();
+        assertEquals(books, all);
     }
 
     @Test

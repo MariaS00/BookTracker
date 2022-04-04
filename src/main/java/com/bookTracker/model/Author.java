@@ -1,5 +1,6 @@
 package com.bookTracker.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.CascadeType;
@@ -19,6 +20,7 @@ public class Author {
     private UUID authorId;
     private String name;
     private String surname;
+    @JsonIgnore
     @ManyToMany(mappedBy = "authors")
     private List<Book> books;
 

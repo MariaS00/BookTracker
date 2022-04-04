@@ -7,12 +7,14 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
+@Table
 @NoArgsConstructor
 @Getter
 @EqualsAndHashCode
 public class Book {
 
     @Id
+    @GeneratedValue
     private UUID bookId;
     private String title;
     @ManyToMany(cascade = CascadeType.ALL)
@@ -22,8 +24,11 @@ public class Book {
             inverseJoinColumns = @JoinColumn(name = "author_id")
     )
     private List<Author> authors;
+    @Enumerated(EnumType.STRING)
     private Category category;
+    @Enumerated(EnumType.STRING)
     private BookType type;
+    @Enumerated(EnumType.STRING)
     private Status bookStatus;
 
     public Book(String title, List<Author> authors, Category category, BookType type, Status bookStatus) {

@@ -11,7 +11,6 @@ import java.util.UUID;
 @Repository
 public interface BookRepository extends JpaRepository<Book, UUID> {
 
-    @Override
     List<Book> findAll();
 
     Optional<Book> findBookByBookId(UUID bookId);
